@@ -24,6 +24,18 @@ func GetLatestBlock(client ethclient.Client) *Models.Block {
 		Difficulty:        block.Difficulty().Uint64(),
 		Hash:              block.Hash().String(),
 		TransactionsCount: len(block.Transactions()),
+		Transactions:      []Models.Transaction{},
+	}
+
+	for _, tx := range block.Transactions() {
+		_block.Transactions = append(_block.Transactions, Models.Transaction{
+			Hash:     tx.Hash().String(),
+			Value:    tx.Value().String(),
+			Gas:      tx.Gas(),
+			GasPrice: tx.GasPrice().Uint64(),
+			Nonce:    tx.Nonce(),
+			To:       tx.To(),
+		})
 	}
 
 	return _block
