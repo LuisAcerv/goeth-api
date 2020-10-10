@@ -22,7 +22,6 @@ func (client ClientHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	module := vars["module"]
 	address := r.URL.Query().Get("address")
 	hash := r.URL.Query().Get("hash")
-	fmt.Println(hash, address)
 
 	w.Header().Set("Content-Type", "application/json")
 	switch module {
