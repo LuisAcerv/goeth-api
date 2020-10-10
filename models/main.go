@@ -1,23 +1,52 @@
 package models
 
-import "github.com/ethereum/go-ethereum/common"
+import (
+	"github.com/ethereum/go-ethereum/common"
+)
 
 // Block data structure
 type Block struct {
-	BlockNumber       int64
-	Timestamp         uint64
-	Difficulty        uint64
-	Hash              string
-	TransactionsCount int
-	Transactions      []Transaction
+	BlockNumber       int64         `json:"blockNumber"`
+	Timestamp         uint64        `json:"timestamp"`
+	Difficulty        uint64        `json:"difficulty"`
+	Hash              string        `json:"hash"`
+	TransactionsCount int           `json:"transactionsCount"`
+	Transactions      []Transaction `json:"transactions"`
 }
 
 // Transaction data structure
 type Transaction struct {
-	Hash     string
-	Value    string
-	Gas      uint64
-	GasPrice uint64
-	Nonce    uint64
-	To       *common.Address
+	Hash     string          `json:"hash"`
+	Value    string          `json:"value"`
+	Gas      uint64          `json:"gas"`
+	GasPrice uint64          `json:"gasPrice"`
+	Nonce    uint64          `json:"nonce"`
+	To       *common.Address `json:"to"`
+	Status   uint64          `json:"status"`
+}
+
+// TransferEthRequest data structure
+type TransferEthRequest struct {
+	PrivKey string `json:"privKey"`
+	To      string `json:"to"`
+	Amount  int64  `json:"amount"`
+}
+
+// HashResponse data structure
+type HashResponse struct {
+	Hash string `json:"hash"`
+}
+
+// BalanceResponse data structure
+type BalanceResponse struct {
+	Address string `json:"address"`
+	Balance string `json:"balance"`
+	Symbol  string `json:"symbol"`
+	Units   string `json:"units"`
+}
+
+// Error data structure
+type Error struct {
+	Code    uint64 `json:"code"`
+	Message string `json:"message"`
 }
