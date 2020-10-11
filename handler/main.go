@@ -18,12 +18,18 @@ type ClientHandler struct {
 }
 
 func (client ClientHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	// Get parameter from url request
 	vars := mux.Vars(r)
 	module := vars["module"]
+
+	// Get the query parameters from url request
 	address := r.URL.Query().Get("address")
 	hash := r.URL.Query().Get("hash")
 
+	// Set our response header
 	w.Header().Set("Content-Type", "application/json")
+
+	// Handle each request using the module parameter:
 	switch module {
 	case "latest-block":
 		_block := Modules.GetLatestBlock(*client.Client)

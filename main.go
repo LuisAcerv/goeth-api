@@ -11,19 +11,17 @@ import (
 )
 
 func main() {
+	// Create a client instance to connect to our providr
 	client, err := ethclient.Dial("http://localhost:7545")
 
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	_ = client
-	fmt.Println("we have a connection")
-
+	// Create a mux router
 	r := mux.NewRouter()
 
+	// We will define a single endpoint
 	r.Handle("/api/v1/eth/{module}", Handlers.ClientHandler{client})
-
 	log.Fatal(http.ListenAndServe(":8080", r))
-
 }
