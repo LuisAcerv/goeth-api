@@ -41,7 +41,6 @@ func (client ClientHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		_tx := Modules.GetTxByHash(*client.Client, txHash)
 
 		if _tx != nil {
-			fmt.Println("RESULT", _tx)
 			json.NewEncoder(w).Encode(_tx)
 			return
 		}

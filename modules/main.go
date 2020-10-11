@@ -62,12 +62,19 @@ func GetTxByHash(client ethclient.Client, hash common.Hash) *Models.Transaction 
 		}
 	}()
 
-	receipt, err := client.TransactionReceipt(context.Background(), hash)
+	tx, pending, err := client.TransactionByHash(context.Background(), hash)
 	if err != nil {
 		fmt.Println(err)
 	}
+
 	return &Models.Transaction{
-		Hash: receipt.TxHash.String(),
+		Hash:     tx.Hash().String(),
+		Value:    tx.Value().String(),
+		Gas:      tx.Gas(),
+		GasPrice: tx.GasPrice().Uint64(),
+		To:       tx.To(),
+		Pending:  pending,
+		Nonce:    tx.Nonce(),
 	}
 }
 

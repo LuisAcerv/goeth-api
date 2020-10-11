@@ -22,7 +22,7 @@ type Transaction struct {
 	GasPrice uint64          `json:"gasPrice"`
 	Nonce    uint64          `json:"nonce"`
 	To       *common.Address `json:"to"`
-	Status   uint64          `json:"status"`
+	Pending  bool            `json:"pending"`
 }
 
 // TransferEthRequest data structure
