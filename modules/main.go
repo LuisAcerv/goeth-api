@@ -46,7 +46,7 @@ func GetLatestBlock(client ethclient.Client) *Models.Block {
 			Gas:      tx.Gas(),
 			GasPrice: tx.GasPrice().Uint64(),
 			Nonce:    tx.Nonce(),
-			To:       tx.To(),
+			To:       tx.To().String(),
 		})
 	}
 
@@ -72,7 +72,7 @@ func GetTxByHash(client ethclient.Client, hash common.Hash) *Models.Transaction 
 		Value:    tx.Value().String(),
 		Gas:      tx.Gas(),
 		GasPrice: tx.GasPrice().Uint64(),
-		To:       tx.To(),
+		To:       tx.To().String(),
 		Pending:  pending,
 		Nonce:    tx.Nonce(),
 	}

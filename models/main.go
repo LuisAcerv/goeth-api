@@ -1,9 +1,5 @@
 package models
 
-import (
-	"github.com/ethereum/go-ethereum/common"
-)
-
 // Block data structure
 type Block struct {
 	BlockNumber       int64         `json:"blockNumber"`
@@ -16,13 +12,13 @@ type Block struct {
 
 // Transaction data structure
 type Transaction struct {
-	Hash     string          `json:"hash"`
-	Value    string          `json:"value"`
-	Gas      uint64          `json:"gas"`
-	GasPrice uint64          `json:"gasPrice"`
-	Nonce    uint64          `json:"nonce"`
-	To       *common.Address `json:"to"`
-	Pending  bool            `json:"pending"`
+	Hash     string `json:"hash"`
+	Value    string `json:"value"`
+	Gas      uint64 `json:"gas"`
+	GasPrice uint64 `json:"gasPrice"`
+	Nonce    uint64 `json:"nonce"`
+	To       string `json:"to"`
+	Pending  bool   `json:"pending"`
 }
 
 // TransferEthRequest data structure
